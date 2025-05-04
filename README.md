@@ -1,5 +1,3 @@
----
-
 # 🌀 Useless Websites
 
 Welcome to **Useless Websites**, a collection of totally random, mostly pointless, but strangely entertaining web experiments.
