@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I am Useless</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./Img/bird.png" type="image/x-icon">
+    <link rel="stylesheet" href="./Styles/style.css">
+</head>
+
+<body>
+
+    <i class="allPage fa-regular fa-eye"></i>
+    <h1>Hello I am Useless Website</h1>
+    <button id="randomBtn">Take me somewhere!</button>
+
+    <div class="modalOverlay" id="modalOverlay">
+        <div class="modalBox">
+            <h2>All Pages</h2>
+            <ul class="allPagesLink">
+
+            </ul>
+            <i class="fa-regular fa-circle-xmark"></i>
+        </div>
+    </div>
+    <footer>
+        <p>MADE WITH ❤️ BY ANIKET KUMAR</p>
+    </footer>
+
+    <script>
+        const pages = [
+            { name: "Fall Page", url: "fallPage.html" },
+            { name: "Flip Card Game", url: "flipCardGame.html" },
+            { name: "Chicken Translator", url: "ChickenTranslator.html" },
+            { name: "Bubble Wrap", url: "bubbleWrap.html" },
+            { name: "Endeless Page", url: "endlessPage.html" },
+            { name: "Draw Page", url: "drawingPage.html" },
+            { name: "Binary Music Player", url: "binaryMusicPlayer.html" },
+
+
+            // Add more like this
+        ];
+        document.getElementById('randomBtn').addEventListener('click', function () {
+            const randomIndex = Math.floor(Math.random() * pages.length);
+            const randomPage = pages[randomIndex].url;
+            window.location.href = randomPage;
+        });
+
+        const allPagesLink = document.querySelector(".allPagesLink");
+        const openModalBtn = document.querySelector(".allPage");
+        const closeModalBtn = document.querySelector(".fa-circle-xmark");
+        const modalOverlay = document.getElementById("modalOverlay");
+
+        openModalBtn.addEventListener("click", () => {
+            modalOverlay.style.display = "flex";
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modalOverlay.style.display = "none";
+        });
+
+        for (let i = 0; i < pages.length; i++) {
+            let liTag = document.createElement("li");
+            let aTag = document.createElement("a");
+            aTag.href = pages[i].url;
+            aTag.innerText = pages[i].name;
+            liTag.appendChild(aTag);
+            allPagesLink.appendChild(liTag);
+        }
+    </script>
+
+</body>
+
+</html>

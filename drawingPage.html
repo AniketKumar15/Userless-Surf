@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw as you wish</title>
+    <link rel="stylesheet" href="./Styles/drwaingPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./Img/bird.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="cursorDot"></div>
+
+    <canvas class="draw-canvas"></canvas>
+
+    <div class="toolBox-container">
+        <div class="toolBox">
+            <i class="fa-solid fa-pen" data-tool="pen"></i>
+            <i class="fa-solid fa-eraser" data-tool="eraser"></i>
+            <i class="fa-solid fa-xmark" data-tool="clear"></i>
+            <i class="fa-solid fa-floppy-disk" data-tool="save"></i>
+            <i class="fa-solid fa-ellipsis" data-tool="strokeWidth"></i>
+            <i class="fa-solid fa-palette" data-tool="strokeColor"></i>
+        </div>
+
+    </div>
+
+    <div class="toolBox-container active" id="strokeWidthInput">
+        <div class="toolBox-extra">
+            <input type="range" class="strokeWidthRange" min="1" max="10" value="2">
+        </div>
+    </div>
+    <div class="toolBox-container active" id="strokeColorInput">
+        <div class="toolBox-extra">
+            <input type="color" class="strokeColorChange">
+        </div>
+    </div>
+    <script src="./Js/drawingPage.js"></script>
+</body>
+
+</html>

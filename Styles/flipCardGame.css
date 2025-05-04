@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: #004d7a;
+    color: white;
+    /* background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+p {
+    text-align: center;
+    font-size: 25px;
+}
+
+.cardContainer {
+    background-color: rgba(61, 61, 61, 0.247);
+    max-width: 650px;
+    width: fit-content;
+    margin: 30px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.cardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card.flipped .cardInner {
+    transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cardBack {
+    background-color: #444;
+    transform: rotateY(180deg);
+}
+
+.cardBack img,
+.cardFront img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.winnerBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 999;
+    display: none;
+    /* Initially hidden */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    height: 300px;
+}
+
+.winnerBox h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#emojiWin {
+    font-size: 100px;
+}
+
+.winnerBox a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00bf72;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.winnerBox a:hover {
+    background-color: #00985b;
+}

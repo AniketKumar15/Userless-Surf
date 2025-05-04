@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#cursorDot {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.186);
+    /* same as default brush color */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+
+body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.toolBox-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolBox-extra {
+    z-index: 100;
+    position: absolute;
+    bottom: 80px;
+    border: 1px black solid;
+    background-color: white;
+    max-width: fit-content;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.toolBox {
+    z-index: 100;
+    position: absolute;
+    bottom: 20px;
+    border: 1px black solid;
+    background-color: white;
+    max-width: fit-content;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.toolBox i {
+    border: 1px black solid;
+    border-radius: 50%;
+    padding: 8px;
+    transition: all .2s ease-in-out;
+}
+
+.toolBox i:hover {
+    background: black;
+    color: white;
+}
+
+canvas {
+    /* background: #b2b2b2; */
+    background: white;
+    width: 100%;
+    height: 100vh;
+}
+
+.activeTool {
+    background: rgb(49, 200, 255);
+    color: white;
+}
+
+.active {
+    display: none;
+}

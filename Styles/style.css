@@ -1,0 +1,137 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #00bf72, #008793, #004d7a, #051937);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Top-right icon */
+.allPage {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    color: #ffffffcc;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.allPage:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Heading style */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Button styling */
+#randomBtn {
+    padding: 14px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    background-color: #fff;
+    color: #008793;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#randomBtn:hover {
+    background-color: #e6e6e6;
+    transform: scale(1.05);
+}
+
+.modalOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalBox {
+    background: #00000030;
+    backdrop-filter: blur(2px);
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+}
+
+.modalBox h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.modalBox ul.allPagesLink {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.modalBox ul.allPagesLink li a {
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.modalBox ul.allPagesLink li a:hover {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.modalBox .fa-circle-xmark {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 28px;
+    color: #ffffffcc;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.modalBox .fa-circle-xmark:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+footer {
+    background: #000;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0px;
+}

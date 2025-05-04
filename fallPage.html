@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain of Items</title>
+    <link rel="shortcut icon" href="./Img/bird.png" type="image/x-icon">
+    <style>
+        body {
+            background: #ffffff;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .textTitle {
+            color: rgb(0, 0, 0);
+            font-size: 100px;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #gameArea {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .item {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gameArea">
+        <h1 class="textTitle">NOTHING DOING</h1>
+    </div>
+    <script>
+        const gameArea = document.getElementById("gameArea");
+        const gravity = 0.3;
+        const maxFallSpeed = 5;
+        const items = [];
+        const contentItem = ["❤️", "👾", "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "🥰", "😗", "😙", "🥲", "😚", "☺️", "🙂", "🤗", "🤩", "🤔", "🫡", "🤨", "😐", "😑", "😶", "🫥", "😶‍🌫️", "😥", "😮"];
+
+        function spawnItem() {
+            const item = document.createElement("div");
+            const randomContent = Math.floor(Math.random() * contentItem.length);
+            item.innerHTML = contentItem[randomContent];
+            item.className = "item";
+            item.style.left = Math.random() * (gameArea.offsetWidth - 10) + "px";
+            item.style.top = "0px";
+            item.style.fontSize = Math.floor(Math.random() * (25 - 16 + 1)) + 16 + "px";
+
+            gameArea.appendChild(item);
+
+            items.push({
+                element: item,
+                y: 0,
+                speed: 0
+            });
+            if (items.length > 200) {
+                const oldest = items.shift(); // remove from array
+                oldest.element.remove();      // remove from DOM
+            }
+        }
+
+        function animate() {
+            items.forEach(obj => {
+                obj.speed += gravity;
+                if (obj.speed > maxFallSpeed) obj.speed = maxFallSpeed;
+
+                obj.y += obj.speed;
+
+                // Stop at the bottom
+                if (obj.y + 10 > gameArea.offsetHeight - 20) {
+                    obj.y = gameArea.offsetHeight - 30;
+                    obj.speed = 0;
+                }
+
+                obj.element.style.top = obj.y + "px";
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Spawn items at intervals (like raindrops)
+        setInterval(spawnItem, 200); // every 200ms
+        animate();
+    </script>
+</body>
+
+</html>

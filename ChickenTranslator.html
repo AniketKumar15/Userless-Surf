@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chicken Translator</title>
+    <link rel="stylesheet" href="./Styles/chickenTranslator.css">
+    <link rel="shortcut icon" href="./Img/bird.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🐔 Chicken Translator</h1>
+        <textarea id="inputText" placeholder="Type your message here..."></textarea>
+        <button onclick="translateToChicken()">Translate to Chicken</button>
+        <div class="output" id="outputText"></div>
+    </div>
+
+    <!-- Chicken cluck sound -->
+    <audio id="cluckSound" src="./Audio/bawk1.mp3" preload="auto"></audio>
+
+    <script src="./Js/chickenTranslator.js"></script>
+</body>
+
+</html>
