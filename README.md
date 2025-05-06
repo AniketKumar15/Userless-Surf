@@ -16,9 +16,10 @@ This is a small fun project made to bring joy, distraction, and some good old in
 * **Endless Page** – A never-ending scroll page. Seriously, it never stops.
 * **Draw Page** – A mini drawing canvas with pen, eraser, and adjustable brush size.
 * **Binary Music Player** – Converts numbers into binary and plays notes based on the bits.
-
-
-Would you like the full README with this section included?
+* **You Can't Click me** – Button change position with mouse hover on it.
+* **Break Egg** – Click on the egg to break it.
+* **Random Color** – Click to change the background color randomly.
+* **Don't Click Me** – when you click the button it change it position.
 
 
 ## 🚀 How to Use
