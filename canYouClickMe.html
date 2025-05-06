@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./Img/bird.png" type="image/x-icon">
+    <title>You Cant Click Me</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Source Code Pro", monospace;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ctn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+        /* CSS */
+        .button-19 {
+            appearance: button;
+            background-color: #1899D6;
+            border: solid transparent;
+            border-radius: 16px;
+            border-width: 0 0 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            line-height: 20px;
+            margin: 0;
+            outline: none;
+            overflow: visible;
+            padding: 13px 16px;
+            text-align: center;
+            text-transform: uppercase;
+            touch-action: manipulation;
+            transform: translateZ(0);
+            transition: filter .2s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-19:after {
+            background-clip: padding-box;
+            background-color: #1CB0F6;
+            border: solid transparent;
+            border-radius: 16px;
+            border-width: 0 0 4px;
+            bottom: -4px;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        .button-19,
+        .button-19:focus {
+            user-select: auto;
+        }
+
+        .button-19:hover:not(:disabled) {
+            filter: brightness(1.1);
+            -webkit-filter: brightness(1.1);
+        }
+
+        .button-19:disabled {
+            cursor: auto;
+        }
+
+        .button-19:active {
+            border-width: 4px 0 0;
+            background: none;
+        }
+
+        #btn {
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ctn">
+        <h1>You Can't Click Me 🦹‍♀️</h1>
+        <button class="button-19 " id="btn">Click Me</button>
+    </div>
+    <script>
+        const text = document.querySelector(".ctn h1");
+        const element = document.getElementById('btn');
+        let i = 0;
+        const messages = [
+            "I told you, you can't click me.",
+            "Nice try 😏.",
+            "Too slow!",
+            "Almost had it? Nope.",
+            "Keep trying, it's fun!",
+            "Your mouse is no match for me.",
+            "Catch me if you can 🏃💨",
+            "Seriously? 😂",
+            "You're getting predictable.",
+            "Even a cat can't catch me.",
+            "Okay now you're just embarrassing yourself.",
+            "You clicked air again!",
+            "Need some help?",
+            "Want a hint? Move faster 😈",
+            "Mouse skills: 1/10",
+            "You're never going to make it.",
+            "Did you just flinch?",
+            "Still trying? Impressive... kinda.",
+            "Alright, fine. I'll stay still... or not!"
+        ];
+
+
+        const changePos = () => {
+            const btnRect = element.getBoundingClientRect();
+            const screenWidth = window.innerWidth - btnRect.width;
+            const screenHeight = window.innerHeight - btnRect.height;
+
+            const randomNumberX = Math.floor(Math.random() * screenWidth);
+            const randomNumberY = Math.floor(Math.random() * screenHeight);
+
+            console.log(`X: ${randomNumberX}, Y: ${randomNumberY}`);
+            if (i < messages.length) {
+                text.innerHTML = messages[i++];
+            } else {
+                i = 0;
+                text.innerHTML = messages[i++];
+            }
+
+            element.style.position = "absolute";
+            element.style.left = randomNumberX + "px";
+            element.style.top = randomNumberY + "px";
+        };
+
+        element.addEventListener('mouseover', () => {
+            changePos();
+
+            console.log("Working");
+        });
+        element.addEventListener("click", () => {
+            text.innerHTML = "Ohh no You Click me";
+        })
+    </script>
+
+</body>
+
+</html>

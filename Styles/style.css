@@ -90,7 +90,8 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    row-gap: 30px;
+    column-gap: 15px;
     padding: 0;
     list-style: none;
     margin: 0 auto;

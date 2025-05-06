@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color on Beat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Source Code Pro", monospace;
+        }
+
+        .element {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Initial color */
+        }
+
+        .codeColor {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="element">
+    </div>
+    <h1 class="codeColor">#ffffff</h1>
+    <script>
+        // JavaScript to change color on a rhythm
+        const element = document.querySelector('.element');
+        const codeColor = document.querySelector(".codeColor");
+
+        function getRandomRgbColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return { r, g, b };
+        }
+        const rgbToHex = (r, g, b) => {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        element.addEventListener("click", () => {
+            const randomRgb = getRandomRgbColor();
+            const hexCode = rgbToHex(randomRgb.r, randomRgb.g, randomRgb.b);
+            codeColor.innerHTML = hexCode;
+            element.style.background = `rgb(${randomRgb.r}, ${randomRgb.g}, ${randomRgb.b})`;
+        })
+
+        codeColor.addEventListener("click", (e) => {
+            const text = codeColor.innerText || codeColor.textContent;
+            navigator.clipboard.writeText(text);
+            alert("Copied the text: " + text);
+        })
+    </script>
+</body>
+
+</html>
