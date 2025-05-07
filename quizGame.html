@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="./Styles/quizGame.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quiz Game</h1>
+        <p id="timer">Timer : 0s</p>
+        <p id="question">Question..</p>
+        <div class="opt-ctn">
+
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "If you had 3 apples and someone took away 2, how many do you have?",
+                correct_answer: "1 (and trust issues)",
+                incorrect_answers: [
+                    "2",
+                    "0",
+                    "42"
+                ]
+            },
+            {
+                question: "What is the scientific name for a fear of long words?",
+                correct_answer: "Hippopotomonstrosesquipedaliophobia",
+                incorrect_answers: [
+                    "Wordaphobia",
+                    "Textlongitis",
+                    "Syllableitis"
+                ]
+            },
+            {
+                question: "What’s the opposite of opposite?",
+                correct_answer: "Same... I think?",
+                incorrect_answers: [
+                    "Reverse",
+                    "Inverse",
+                    "Opposite"
+                ]
+            },
+            {
+                question: "What color is a mirror?",
+                correct_answer: "Whatever you want it to be 😎",
+                incorrect_answers: [
+                    "Silver",
+                    "Clear",
+                    "White-ish"
+                ]
+            },
+            {
+                question: "If two vegans get in a fight, is it still considered beef?",
+                correct_answer: "Nope, it’s a plant-based conflict 🌱",
+                incorrect_answers: [
+                    "Yes",
+                    "Depends on the tofu",
+                    "Only if it's spicy"
+                ]
+            },
+            {
+                question: "How many chickens would it take to take down an elephant?",
+                correct_answer: "None. Elephants and chickens are bros.",
+                incorrect_answers: [
+                    "57",
+                    "One very brave chicken",
+                    "Who let them fight?"
+                ]
+            },
+            {
+                question: "If you drop soap on the floor, is the floor clean or the soap dirty?",
+                correct_answer: "Yes.",
+                incorrect_answers: [
+                    "The floor is clean",
+                    "The soap is dirty",
+                    "This question is illegal"
+                ]
+            },
+            {
+                question: "Why do we park in driveways and drive on parkways?",
+                correct_answer: "Because English 🤷‍♂️",
+                incorrect_answers: [
+                    "It's a trap",
+                    "Logic.exe stopped working",
+                    "Aliens"
+                ]
+            },
+            {
+                question: "Can you cry underwater?",
+                correct_answer: "Yes, but no one will know",
+                incorrect_answers: [
+                    "Nope",
+                    "Only fish can cry underwater",
+                    "Only during sad showers"
+                ]
+            },
+            {
+                question: "What happens if Pinocchio says “My nose will grow now”?",
+                correct_answer: "A paradox is born 😵",
+                incorrect_answers: [
+                    "It grows",
+                    "It doesn’t grow",
+                    "It explodes"
+                ]
+            }
+        ];
+
+
+        let questionText = document.getElementById("question");
+        let optionCtn = document.querySelector(".opt-ctn");
+        let timerText = document.getElementById("timer");
+
+        let i = 0;
+        let positiveScore = 0;
+        let timer = 0;
+
+        const myinterval = setInterval(() => {
+            timer++;
+            timerText.innerHTML = "Timer : " + timer + "s";
+        }, 1000);
+
+        function showQuiz(index) {
+            const questionData = questions[index];
+            const allAnswers = [...questionData.incorrect_answers, questionData.correct_answer];
+            // allAnswers.sort(() => Math.random() - 0.5);
+
+            // show All the questions
+            questionText.innerHTML = questionData.question;
+            optionCtn.innerHTML = "";
+
+            allAnswers.forEach(ans => {
+                const btn = document.createElement("button");
+                btn.className = "opt";
+                btn.textContent = ans;
+
+                btn.addEventListener("click", () => {
+                    if (ans === questionData.correct_answer) {
+                        alert("Correct!");
+                        positiveScore++;
+                    } else {
+                        alert("Wrong!");
+                    }
+
+                    i++;
+                    if (i < questions.length) {
+                        showQuiz(i);
+                    } else {
+                        document.getElementById("question").innerHTML = "Quiz Complete!<br>" + "Score is : " + positiveScore + "<br>Total Question : " + questions.length;
+                        optionCtn.innerHTML = "<a href= 'quizGame.html'>Play Again</a?";
+                        clearInterval(myinterval);
+                    }
+                })
+                optionCtn.appendChild(btn);
+            })
+        }
+        showQuiz(i);
+    </script>
+</body>
+
+</html>

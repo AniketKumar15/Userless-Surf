@@ -1,0 +1,47 @@
+const questions = [
+            {
+                "question": "How many chromosomes are in your body cells?",
+                "correct_answer": "23",
+                "incorrect_answers": [
+                    "21",
+                    "22",
+                    "24"
+                ]
+            },
+            {
+                "question": "Rhinoplasty is a surgical procedure on what part of the human body?",
+                "correct_answer": "Nose",
+                "incorrect_answers": [
+                    "Ears",
+                    "Chin",
+                    "Neck"
+                ]
+            },
+            {
+                "question": "What does DNA stand for?",
+                "correct_answer": "Deoxyribonucleic Acid",
+                "incorrect_answers": [
+                    "Deoxyribogenetic Acid",
+                    "Deoxyribogenetic Atoms",
+                    "Detoxic Acid"
+                ]
+            },
+            {
+                "question": "What did Gregory Mendel use to test genetic crossovers?",
+                "correct_answer": "Peas",
+                "incorrect_answers": [
+                    "Cats",
+                    "Flowers",
+                    "Parrots"
+                ]
+            },
+            {
+                "question": "Which of the following blood vessels carries deoxygenated blood?",
+                "correct_answer": "Pulmonary Artery",
+                "incorrect_answers": [
+                    "Pulmonary Vein",
+                    "Aorta",
+                    "Coronary Artery"
+                ]
+            }
+        ]

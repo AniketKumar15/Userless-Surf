@@ -20,6 +20,8 @@ This is a small fun project made to bring joy, distraction, and some good old in
 * **Break Egg** – Click on the egg to break it.
 * **Random Color** – Click to change the background color randomly.
 * **Don't Click Me** – when you click the button it change it position.
+* **Battery Status** –Show the current battery status and charger pluged in or not.
+
 
 
 ## 🚀 How to Use

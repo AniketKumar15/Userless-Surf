@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Battery Charge Status</title>
+    <link rel="stylesheet" href="./Styles/battry.css">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div class="battery">
+                <div id="battery-level"></div>
+            </div>
+            <h1 id="levelBatteryText"></h1>
+        </div>
+    </div>
+
+    <script>
+        const batteryLevel = document.getElementById("battery-level");
+        const levelBatteryText = document.getElementById("levelBatteryText");
+        const batteryContainer = document.querySelector(".battery");
+
+        const GREEN = "#4BD865";
+        const YELLOW = "#F7C602";
+        const RED = "#FE3732";
+
+        // Set initial styles
+        batteryLevel.style.width = "100%";
+        batteryLevel.style.backgroundColor = GREEN;
+
+        function updateBatteryStatus(battery) {
+            const level = Math.floor(battery.level * 100);
+            batteryLevel.style.width = level + "%";
+            levelBatteryText.innerHTML = level + "%";
+            // Change color based on battery level
+            if (level > 60) {
+                batteryLevel.style.backgroundColor = GREEN;
+            } else if (level > 20) {
+                batteryLevel.style.backgroundColor = YELLOW;
+            } else {
+                batteryLevel.style.backgroundColor = RED;
+            }
+
+            if (battery.charging) {
+                batteryContainer.classList.add("charging");
+            } else {
+                batteryContainer.classList.remove("charging");
+            }
+        }
+        navigator.getBattery().then(battery => {
+            updateBatteryStatus(battery);
+
+            battery.addEventListener("levelchange", () => updateBatteryStatus(battery));
+            battery.addEventListener("chargingchange", () => updateBatteryStatus(battery));
+        });
+
+
+    </script>
+</body>
+
+</html>
