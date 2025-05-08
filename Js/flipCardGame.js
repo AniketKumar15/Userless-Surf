@@ -1,6 +1,11 @@
 const cardContainer = document.querySelector(".cardContainer");
 const socreBoard = document.querySelector(".score");
 const winnerBox = document.querySelector(".winnerBox");
+const winSound = document.querySelector(".winnerSound");
+const wrongSound = document.querySelector(".wrongSound");
+const scoreSound = document.querySelector(".scoreSound");
+
+
 
 const imgArray = [
     "https://i.etsystatic.com/13434992/r/il/3bf90f/3219303725/il_1080xN.3219303725_kovf.jpg",
@@ -20,9 +25,9 @@ let lockBoard = false;
 // Score Manager
 let scores = 0;
 let maxScores = imgArray.length;
-let winSound = new Audio("Audio/Winner.wav");
-let scoreSound = new Audio("Audio/scoreSound.wav");
-let wrongSound = new Audio("Audio/wrongSound.wav");
+// let winSound = new Audio("Audio/Winner.wav");
+// let scoreSound = new Audio("Audio/scoreSound.wav");
+// let wrongSound = new Audio("Audio/wrongSound.wav");
 
 
 for (let i = gameImages.length - 1; i > 0; i--) {
