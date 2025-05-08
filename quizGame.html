@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <h1>Quiz Game</h1>
+        <h1>Useless Quiz Game</h1>
         <p id="timer">Timer : 0s</p>
         <p id="question">Question..</p>
         <div class="opt-ctn">
@@ -128,7 +128,7 @@
         function showQuiz(index) {
             const questionData = questions[index];
             const allAnswers = [...questionData.incorrect_answers, questionData.correct_answer];
-            // allAnswers.sort(() => Math.random() - 0.5);
+            allAnswers.sort(() => Math.random() - 0.5);
 
             // show All the questions
             questionText.innerHTML = questionData.question;
@@ -152,7 +152,7 @@
                         showQuiz(i);
                     } else {
                         document.getElementById("question").innerHTML = "Quiz Complete!<br>" + "Score is : " + positiveScore + "<br>Total Question : " + questions.length;
-                        optionCtn.innerHTML = "<a href= 'quizGame.html'>Play Again</a?";
+                        optionCtn.innerHTML = "<a href= 'quizGame.html'>Play Again</a>";
                         clearInterval(myinterval);
                     }
                 })

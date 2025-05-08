@@ -50,9 +50,16 @@
             // Add more like this
         ];
         document.getElementById('randomBtn').addEventListener('click', function () {
-            const randomIndex = Math.floor(Math.random() * pages.length);
+            let previousPage;
+            let randomIndex = Math.floor(Math.random() * pages.length);
+            previousPage = randomIndex;
+
+            if (randomIndex === previousPage) {
+                randomIndex = (randomIndex + 1) % pages.length; // Ensure a different page is selected
+            }
             const randomPage = pages[randomIndex].url;
-            window.location.href = randomPage;
+            // window.location.href = randomPage;
+            window.open(randomPage, '_blank'); // Open in new tab
         });
 
         const allPagesLink = document.querySelector(".allPagesLink");
@@ -73,6 +80,7 @@
             let aTag = document.createElement("a");
             aTag.href = pages[i].url;
             aTag.innerText = pages[i].name;
+            aTag.target = "_blank"; // Open in new tab
             liTag.appendChild(aTag);
             allPagesLink.appendChild(liTag);
         }

@@ -20,9 +20,9 @@ let lockBoard = false;
 // Score Manager
 let scores = 0;
 let maxScores = imgArray.length;
-let winSound = new Audio("../Audio/Winner.wav");
-let scoreSound = new Audio("../Audio/scoreSound.wav");
-let wrongSound = new Audio("../Audio/wrongSound.wav");
+let winSound = new Audio("Audio/Winner.wav");
+let scoreSound = new Audio("Audio/scoreSound.wav");
+let wrongSound = new Audio("Audio/wrongSound.wav");
 
 
 for (let i = gameImages.length - 1; i > 0; i--) {
