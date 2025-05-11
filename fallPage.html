@@ -10,7 +10,6 @@
         body {
             background: #ffffff;
             margin: 0;
-            overflow: hidden;
         }
 
         .textTitle {
@@ -76,11 +75,12 @@
 
                 obj.y += obj.speed;
 
-                // Stop at the bottom
-                if (obj.y + 10 > gameArea.offsetHeight - 20) {
-                    obj.y = gameArea.offsetHeight - 30;
+                const screenHeight = window.innerHeight;
+                if (obj.y + 10 > screenHeight - 20) {
+                    obj.y = screenHeight - 30;
                     obj.speed = 0;
                 }
+
 
                 obj.element.style.top = obj.y + "px";
             });

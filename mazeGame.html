@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maze Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            width: 300px;
+            height: 300px;
+            background: #f0f0f0;
+            image-rendering: pixelated;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mazeCanvas" width="800" height="800"></canvas>
+
+    <script>
+        const canvas = document.getElementById("mazeCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Maze configuration
+        const mazeCols = 20;
+        const mazeRows = 20;
+        const cellWidth = canvas.width / mazeCols;
+        const cellHeight = canvas.height / mazeRows;
+
+        // Player and goal
+        const player = {
+            x: 0,
+            y: 40,
+            size: cellHeight - 6,
+            color: "red"
+        };
+
+        const goal = {
+            x: (mazeCols - 1) * cellWidth,
+            y: (mazeRows - 1) * cellHeight - 37,
+            size: cellWidth,
+            color: "green"
+        };
+
+        // Load maze image
+        const mazeImg = new Image();
+        mazeImg.src = "./Img/maze.png"; // Your maze image path
+
+        mazeImg.onload = () => {
+            drawPlayer();
+        };
+
+        // Draw maze, player, and goal
+        function drawPlayer() {
+            ctx.drawImage(mazeImg, 0, 0, canvas.width, canvas.height);
+
+            // Draw goal
+            ctx.fillStyle = goal.color;
+            ctx.fillRect(goal.x, goal.y, goal.size, goal.size);
+
+            // Draw player
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.size, player.size);
+        }
+
+        // Collision detection: returns false if player hits a wall
+        function isWalkable(x, y) {
+            const imgData = ctx.getImageData(x, y, player.size, player.size).data;
+
+            for (let i = 0; i < imgData.length; i += 4) {
+                const r = imgData[i], g = imgData[i + 1], b = imgData[i + 2];
+                if (r < 50 && g < 50 && b < 50) return false; // Wall (dark pixel)
+            }
+            return true; // Walkable (light pixel)
+        }
+
+        function checkWin() {
+            const buffer = 2;
+            if (
+                player.x + player.size - buffer > goal.x &&
+                player.x < goal.x + goal.size - buffer &&
+                player.y + player.size - buffer > goal.y &&
+                player.y < goal.y + goal.size - buffer
+            ) {
+                setTimeout(() => {
+                    alert("🎉 You reached the goal!");
+                    player.x = 0;
+                    player.y = 0;
+                    drawPlayer();
+                }, 100);
+            }
+        }
+
+        // Keyboard controls
+        const step = cellWidth / 10;
+
+        document.addEventListener("keydown", (e) => {
+            let newX = player.x;
+            let newY = player.y;
+
+            switch (e.key) {
+                case "ArrowUp": newY -= step; break;
+                case "ArrowDown": newY += step; break;
+                case "ArrowLeft": newX -= step; break;
+                case "ArrowRight": newX += step; break;
+                default: return;
+            }
+
+            if (isWalkable(newX, newY)) {
+                player.x = newX;
+                player.y = newY;
+                drawPlayer();
+                checkWin();
+            }
+        });
+
+        // Snap player to grid on keyup
+        document.addEventListener("keyup", () => {
+            // Check if player is *close enough* to snap safely
+            const closeEnough = 2; // pixels tolerance
+
+            const xOffset = player.x % cellWidth;
+            const yOffset = player.y % cellHeight;
+
+            if (xOffset < closeEnough || cellWidth - xOffset < closeEnough) {
+                const snappedX = Math.round(player.x / cellWidth) * cellWidth;
+                if (isWalkable(snappedX, player.y)) {
+                    player.x = snappedX;
+                }
+            }
+
+            if (yOffset < closeEnough || cellHeight - yOffset < closeEnough) {
+                const snappedY = Math.round(player.y / cellHeight) * cellHeight;
+                if (isWalkable(player.x, snappedY)) {
+                    player.y = snappedY;
+                }
+            }
+
+            drawPlayer();
+        });
+
+
+    </script>
+</body>
+
+</html>

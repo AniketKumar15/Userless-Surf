@@ -21,7 +21,8 @@ This is a small fun project made to bring joy, distraction, and some good old in
 * **Random Color** – Click to change the background color randomly.
 * **Don't Click Me** – when you click the button it change it position.
 * **Battery Status** –Show the current battery status and charger pluged in or not.
-
+* **Quiz Game** – Answer the useless questions multiple choise question.
+* **Maze Game** – Use Arrow key to move player and pass the maze.
 
 
 ## 🚀 How to Use

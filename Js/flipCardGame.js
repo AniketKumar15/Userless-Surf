@@ -92,6 +92,7 @@ const callCard = () => {
                     }
                 } else {
                     console.log("❌ Not a match");
+                    wrongSound.currentTime = 0;
                     wrongSound.play();
                     setTimeout(() => {
                         first.card.classList.remove("flipped");
